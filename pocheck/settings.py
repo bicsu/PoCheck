@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'y1w=o8_rv*d2jrp8h1^eg2w0b0#ui6*av4^2!g%ml*-_0=ew)&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['pocheck-bicsu.c9users.io',
 'localhost', '127.0.0.1', '[::1]', '.pythonanywhere.com']
