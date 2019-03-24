@@ -2,6 +2,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post
 from django.utils import timezone
 from .forms import PostForm
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+import json
 
 # Create your views here.
 def post_list(request):
@@ -39,4 +42,51 @@ def post_edit(request, pk):
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm(instance=post)
-    return render(request, 'attend/post_edit.html', {'form': form})    
+    return render(request, 'attend/post_edit.html', {'form': form})
+    
+    
+    
+    
+##### kakao
+
+def keyboard(request):
+ 
+    return JsonResponse({
+        'type':'buttons',
+        'buttons':['오늘','내일']
+    })
+ 
+# @csrf_exempt
+# def answer(request):
+ 
+#     json_str = ((request.body).decode('utf-8'))
+#     received_json_data = json.loads(json_str)
+#     datacontent = received_json_data['content']
+ 
+#     if datacontent == '오늘':
+#         today = "오늘 급식"
+ 
+#         return JsonResponse({
+#                 'message': {
+#                     'text': today
+#                 },
+#                 'keyboard': {
+#                     'type':'buttons',
+#                     'buttons':['오늘','내일']
+#                 }
+ 
+#             })
+ 
+#     elif datacontent == '내일':
+#         tomorrow = "내일 급식"
+ 
+#         return JsonResponse({
+#                 'message': {
+#                     'text': tomorrow
+#                 },
+#                 'keyboard': {
+#                     'type':'buttons',
+#                     'buttons':['오늘','내일']
+#                 }
+ 
+#             })
