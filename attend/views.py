@@ -44,9 +44,6 @@ def post_edit(request, pk):
         form = PostForm(instance=post)
     return render(request, 'attend/post_edit.html', {'form': form})
     
-    
-    
-    
 ##### kakao
 
 def keyboard(request):
