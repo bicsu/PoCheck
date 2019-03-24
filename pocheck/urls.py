@@ -21,4 +21,5 @@ from attend import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('attend.urls')),
+    path('keyboard/',views.keyboard, name='keyboard'),
 ]
