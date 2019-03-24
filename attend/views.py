@@ -52,7 +52,7 @@ def post_edit(request, pk):
 def keyboard(request):
  
     return JsonResponse({
-        'type':'buttons',
+        'type':'text',
         'buttons':['오늘','내일']
     })
  
