@@ -50,10 +50,9 @@ def post_edit(request, pk):
 ##### kakao
 
 def keyboard(request):
- 
     return JsonResponse({
-        'type':'text',
-        'buttons':['오늘','내일']
+        'type': 'text',
+        'buttons': ['사용법',]
     })
  
 @csrf_exempt
