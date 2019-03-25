@@ -59,22 +59,23 @@ def message(request):
     json_str = ((request.body).decode('utf-8'))
     received_json_data = json.loads(json_str)
     datacontent = received_json_data['content']
+    
     if datacontent =='출석체크 확인':
         msg = '이 기능은 아직;;'
     elif datacontent == '오늘 RIST 식단':
         msg = "https://ssgfoodingplus.com/fmn101.do?goTo=todayMenu&storeCd=05600"
  
-        return_dict =  JsonResponse({
-                'message': {
-                    'text': msg
-                },
-                'keyboard': {
-                    'type':'buttons',
-                    'buttons':['출석체크 확인', '오늘 RIST 식단']
-                }
- 
-            })
-        if img_bool == False:
-            return return_dict
-        else : 
-            pass
+    return_dict =  JsonResponse({
+            'message': {
+                'text': msg
+            },
+            'keyboard': {
+                'type':'buttons',
+                'buttons':['출석체크 확인', '오늘 RIST 식단']
+            }
+
+        })
+    if img_bool == False:
+        return return_dict
+    else : 
+        pass
