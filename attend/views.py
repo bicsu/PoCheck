@@ -47,20 +47,43 @@ def post_edit(request, pk):
 ##### kakao
 
 def keyboard(request):
+ 
     return JsonResponse({
-        'type': 'buttons',
-        'buttons': ['눌러봐',]
+        'type':'buttons',
+        'buttons':['오늘','내일']
     })
  
 @csrf_exempt
-def message(request):
-    message = ((request.body).decode('utf-8'))
-    return_json_str = json.loads(message)
-    content = return_json_str['content']
-
-    if content == '눌러봐':
+def answer(request):
+ 
+    json_str = ((request.body).decode('utf-8'))
+    received_json_data = json.loads(json_str)
+    datacontent = received_json_data['content']
+ 
+    if datacontent == '오늘':
+        today = "오늘 급식"
+ 
         return JsonResponse({
-            'message': {
-                'text': 'KIN',
-            },
-        })
+                'message': {
+                    'text': today
+                },
+                'keyboard': {
+                    'type':'buttons',
+                    'buttons':['오늘','내일']
+                }
+ 
+            })
+ 
+    elif datacontent == '내일':
+        tomorrow = "내일 급식"
+ 
+        return JsonResponse({
+                'message': {
+                    'text': tomorrow
+                },
+                'keyboard': {
+                    'type':'buttons',
+                    'buttons':['오늘','내일']
+                }
+ 
+            })
