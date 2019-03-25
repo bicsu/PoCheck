@@ -58,7 +58,7 @@ def message(request):
     return_json_str = json.loads(message)
     content = return_json_str['content']
 
-    if content == '사용법':
+    if content == '눌러봐':
         return JsonResponse({
             'message': {
                 'text': 'KIN',
