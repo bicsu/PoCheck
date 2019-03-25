@@ -54,7 +54,7 @@ def keyboard(request):
     })
  
 @csrf_exempt
-def answer(request):
+def message(request):
  
     json_str = ((request.body).decode('utf-8'))
     received_json_data = json.loads(json_str)
