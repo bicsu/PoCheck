@@ -48,8 +48,8 @@ def post_edit(request, pk):
 
 def keyboard(request):
     return JsonResponse({
-        'type': 'text',
-        'buttons': ['사용법',]
+        'type': 'button',
+        'buttons': ['눌러봐',]
     })
  
 @csrf_exempt
