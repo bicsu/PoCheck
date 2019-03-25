@@ -48,7 +48,7 @@ def post_edit(request, pk):
 
 def keyboard(request):
     return JsonResponse({
-        'type': 'button',
+        'type': 'buttons',
         'buttons': ['눌러봐',]
     })
  
