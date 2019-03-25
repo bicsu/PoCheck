@@ -59,8 +59,9 @@ def message(request):
     json_str = ((request.body).decode('utf-8'))
     received_json_data = json.loads(json_str)
     datacontent = received_json_data['content']
- 
-    if datacontent == '오늘 RIST 식단':
+    if datacontent =='출석체크 확인':
+        msg = '이 기능은 아직;;'
+    elif datacontent == '오늘 RIST 식단':
         msg = "https://ssgfoodingplus.com/fmn101.do?goTo=todayMenu&storeCd=05600"
  
         return_dict =  JsonResponse({
