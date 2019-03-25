@@ -50,40 +50,30 @@ def keyboard(request):
  
     return JsonResponse({
         'type':'buttons',
-        'buttons':['오늘','내일']
+        'buttons':['출석체크 확인', '오늘 RIST 식단']
     })
  
 @csrf_exempt
 def message(request):
- 
+    img_bool = False
     json_str = ((request.body).decode('utf-8'))
     received_json_data = json.loads(json_str)
     datacontent = received_json_data['content']
  
-    if datacontent == '오늘':
-        today = "오늘 급식"
+    if datacontent == '오늘 RIST 식단':
+        msg = "https://ssgfoodingplus.com/fmn101.do?goTo=todayMenu&storeCd=05600"
  
-        return JsonResponse({
+        return_dict =  JsonResponse({
                 'message': {
-                    'text': today
+                    'text': msg
                 },
                 'keyboard': {
                     'type':'buttons',
-                    'buttons':['오늘','내일']
+                    'buttons':['출석체크 확인', '오늘 RIST 식단']
                 }
  
             })
- 
-    elif datacontent == '내일':
-        tomorrow = "내일 급식"
- 
-        return JsonResponse({
-                'message': {
-                    'text': tomorrow
-                },
-                'keyboard': {
-                    'type':'buttons',
-                    'buttons':['오늘','내일']
-                }
- 
-            })
+        if img_bool == False:
+            return return_dict
+        else : 
+            pass
