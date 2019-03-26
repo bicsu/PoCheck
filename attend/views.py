@@ -83,7 +83,7 @@ def message(request):
             }
 
         })
-    return_dict =  JsonResponse({
+    return_img_dict =  JsonResponse({
         'message': {
             'text': msg,
             'photo':{
@@ -102,4 +102,4 @@ def message(request):
     if img_bool == False:
         return return_dict
     else : 
-        pass
+        return return_img_dict
