@@ -72,6 +72,7 @@ def message(request):
     elif datacontent =='시간표':
         img_bool = True
         msg = 'B반의 시간표'
+        url = 'static/css/images/timetable.jpg'
         
  
     return_dict =  JsonResponse({
@@ -88,7 +89,7 @@ def message(request):
         'message': {
             'text': msg,
             'photo':{
-                'url':'css/images/timetable.jpg',
+                'url':url,
                 'width':480,
                 'height':640
                 }
