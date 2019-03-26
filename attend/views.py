@@ -71,6 +71,7 @@ def message(request):
         msg = "https://ssgfoodingplus.com/fmn101.do?goTo=todayMenu&storeCd=05600"
     elif datacontent =='시간표':
         img_bool = True
+        msg = 'B반의 시간표'
         
  
     return_dict =  JsonResponse({
@@ -79,7 +80,7 @@ def message(request):
             },
             'keyboard': {
                 'type':'buttons',
-                'buttons':['출석체크 확인', '오늘 RIST 식단']
+                'buttons':['출석체크 확인', '오늘 RIST 식단','시간표']
             }
 
         })
@@ -95,7 +96,7 @@ def message(request):
         },
         'keyboard': {
             'type':'buttons',
-            'buttons':['출석체크 확인', '오늘 RIST 식단']
+            'buttons':['출석체크 확인', '오늘 RIST 식단','시간표']
         }
 
     })
