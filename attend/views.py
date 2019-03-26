@@ -7,9 +7,9 @@ from django.http import JsonResponse
 import json
 
 # Create your views here.
-def post_list(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'attend/post_list.html',{'posts':posts})
+# def post_list(request):
+#     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+#     return render(request, 'attend/post_list.html',{'posts':posts})
     
     
 def post_detail(request, pk):
@@ -28,7 +28,12 @@ def post_new(request):
     else:
         form = PostForm()
     return render(request, 'attend/post_edit.html', {'form': form})
-    
+
+def check(request):
+    return render(request, 'attend/check.html')
+
+
+
     
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -50,7 +55,7 @@ def keyboard(request):
  
     return JsonResponse({
         'type':'buttons',
-        'buttons':['출석체크 확인', '오늘 RIST 식단']
+        'buttons':['출석체크 확인', '오늘 RIST 식단','시간표']
     })
  
 @csrf_exempt
@@ -64,6 +69,9 @@ def message(request):
         msg = '이 기능은 아직;;'
     elif datacontent == '오늘 RIST 식단':
         msg = "https://ssgfoodingplus.com/fmn101.do?goTo=todayMenu&storeCd=05600"
+    elif datacontent =='시간표':
+        img_bool = True
+        
  
     return_dict =  JsonResponse({
             'message': {
@@ -75,6 +83,22 @@ def message(request):
             }
 
         })
+    return_dict =  JsonResponse({
+        'message': {
+            'text': msg,
+            'photo':{
+                'url':'css/images/timetable.jpg',
+                'width':480,
+                'height':640
+                }
+            
+        },
+        'keyboard': {
+            'type':'buttons',
+            'buttons':['출석체크 확인', '오늘 RIST 식단']
+        }
+
+    })
     if img_bool == False:
         return return_dict
     else : 
