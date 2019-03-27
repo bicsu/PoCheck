@@ -5,11 +5,10 @@ from .forms import PostForm
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 import json
-import dateimte
+import datetime
 from bs4 import BeautifulSoup
 import random
 import os
-import requests
 import re
 
 
@@ -73,8 +72,10 @@ def message(request):
     datacontent = received_json_data['content']
     
     if datacontent =='출석체크 확인':
+        
         msg = '이 기능은 아직;;'
     elif datacontent == '오늘 RIST 식단':
+        
         url = 'https://ssgfoodingplus.com/fmn101.do?goTo=todayMenuJson'
         yearmonth = datetime.datetime.now().strftime("%Y-%m-")
         now = datetime.datetime.now()
@@ -114,7 +115,7 @@ def message(request):
                 lunch+=res['result'][i]['if_menu_nm']+"\n"
             elif res['result'][i]['meal_type_nm']=="석식":
                 dinner+=res['result'][i]['if_menu_nm']+"\n"
-        return_msg ="RIST식당/{0}요일\n-------조식-------\n{1}\n-------중식-------\n{2}\n-------석식-------\n{3}\n".format(days[r],breakfast,lunch,dinner)
+        msg ="RIST식당/{0}요일\n-------조식-------\n{1}\n-------중식-------\n{2}\n-------석식-------\n{3}\n".format(days[r],breakfast,lunch,dinner)
         
         
     elif datacontent =='시간표':
@@ -149,7 +150,7 @@ def message(request):
         }
 
     })
-    if img_bool == False:
-        return return_dict
-    else : 
+    if img_bool :
         return return_img_dict
+    else : 
+        return return_dict
