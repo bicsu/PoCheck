@@ -66,8 +66,10 @@ def message(request):
     datacontent = received_json_data['content']
     
     if datacontent =='출석체크 확인':
+        ima_bool = False
         msg = '이 기능은 아직;;'
     elif datacontent == '오늘 RIST 식단':
+        ima_bool = False
         msg = "https://ssgfoodingplus.com/fmn101.do?goTo=todayMenu&storeCd=05600"
     elif datacontent =='시간표':
         img_bool = True
