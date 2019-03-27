@@ -12,13 +12,6 @@ import os
 import re
 import requests
 
-
-
-# Create your views here.
-# def post_list(request):
-#     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-#     return render(request, 'attend/post_list.html',{'posts':posts})
-    
     
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -131,9 +124,8 @@ def message(request):
     elif datacontent =='시간표':
         img_bool = True
         msg = 'B반의 시간표'
-        url = 'http://bicsu.pythonanywhere.com/static/images/schedule_B.jpg'
+        url = '/pocheck/attend/static/images/schedule_B.jpg'
         
- 
     return_dict =  JsonResponse({
             'message': {
                 'text': msg
@@ -142,7 +134,6 @@ def message(request):
                 'type':'buttons',
                 'buttons':['출석체크 확인', '오늘 RIST 식단','시간표']
             }
-
         })
     return_img_dict =  JsonResponse({
         'message': {
