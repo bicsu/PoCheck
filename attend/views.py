@@ -72,12 +72,12 @@ def message(request):
     json_str = ((request.body).decode('utf-8'))
     received_json_data = json.loads(json_str)
     datacontent = received_json_data['content']
-    
+    msg = 'ㅎㅎ'
+    url = 'ㅎㅎ'
     if datacontent =='출석체크 확인':
-        
         msg = '이 기능은 아직;;'
-    elif datacontent == '오늘 RIST 식단':
         
+    elif datacontent == '오늘 RIST 식단':
         url = 'https://ssgfoodingplus.com/fmn101.do?goTo=todayMenuJson'
         yearmonth = datetime.datetime.now().strftime("%Y-%m-")
         now = datetime.datetime.now()
@@ -152,7 +152,6 @@ def message(request):
         }
 
     })
-    print(img_bool)
     if img_bool :
         return return_img_dict
     else : 
