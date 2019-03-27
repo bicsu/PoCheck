@@ -57,6 +57,9 @@ def post_edit(request, pk):
         form = PostForm(instance=post)
     return render(request, 'attend/post_edit.html', {'form': form})
     
+    
+def schedule(request):
+    return render(request, 'attend/photos.html')
 ##### kakao
 
 def keyboard(request):
@@ -85,7 +88,7 @@ def message(request):
         day = now.day
         r = datetime.datetime.today().weekday()
         hour = datetime.datetime.now().hour
-        if hour>=14:
+        if hour>=20:
             if r==6:
                 r=0
             else :
@@ -123,7 +126,7 @@ def message(request):
     elif datacontent =='시간표':
         img_bool = True
         msg = 'B반의 시간표'
-        url = 'static/css/images/timetable.jpg'
+        url = 'http://pocheck-bicsu.c9users.io:8080/static/images/schedule_B.jpg'
         
  
     return_dict =  JsonResponse({

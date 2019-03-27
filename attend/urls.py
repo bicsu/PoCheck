@@ -8,4 +8,5 @@ urlpatterns = [
     path('post/<int:pk>/edit/', views.post_edit, name = 'post_edit'),
     path('keyboard/',views.keyboard, name='keyboard'),
     path('message', views.message, name='message'),
+    path('schedule', views.schedule, name='schedule'),
     ]
