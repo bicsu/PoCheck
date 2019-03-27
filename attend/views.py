@@ -126,7 +126,7 @@ def message(request):
                     dinner_b+=res['result'][i]['if_menu_nm']+"\n"
                 
         
-        return_msg ="RIST식당/{0}요일\n-------조식-------\n{1}\n-------중식-------\n{2}\n-------석식A-------\n{3}\n-------석식B-------\n{4}\n".format(days[r],breakfast,lunch,dinner,dinner_b)
+        msg ="RIST식당/{0}요일\n-------조식-------\n{1}\n-------중식-------\n{2}\n-------석식A-------\n{3}\n-------석식B-------\n{4}\n".format(days[r],breakfast,lunch,dinner,dinner_b)
         
     elif datacontent =='시간표':
         img_bool = True
