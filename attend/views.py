@@ -10,6 +10,8 @@ from bs4 import BeautifulSoup
 import random
 import os
 import re
+import requests
+
 
 
 # Create your views here.
@@ -150,6 +152,7 @@ def message(request):
         }
 
     })
+    print(img_bool)
     if img_bool :
         return return_img_dict
     else : 
