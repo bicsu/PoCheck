@@ -122,9 +122,9 @@ def message(request):
         msg ="RIST식당/{0}요일\n-------조식-------\n{1}\n-------중식-------\n{2}\n-------석식A-------\n{3}\n-------석식B-------\n{4}\n".format(days[r],breakfast,lunch,dinner,dinner_b)
         
     elif datacontent =='시간표':
-        img_bool = True
-        msg = 'B반의 시간표'
-        url = '/pocheck/attend/static/images/schedule_B.jpg'
+        # img_bool = True
+        msg = 'http://bicsu.pythonanywhere.com/schedule'
+        # url = '/pocheck/attend/static/images/schedule_B.jpg'
         
     return_dict =  JsonResponse({
             'message': {
