@@ -88,7 +88,7 @@ def message(request):
         day = now.day
         r = datetime.datetime.today().weekday()
         hour = datetime.datetime.now().hour
-        if hour>=20:
+        if hour>=18:
             if r==6:
                 r=0
             else :
@@ -113,20 +113,25 @@ def message(request):
         breakfast=""
         lunch=""
         dinner=""
+        dinner_b=""
         for i in range(0,len(res['result'])):
             if res['result'][i]['meal_type_nm']=="조식":
                 breakfast+=res['result'][i]['if_menu_nm']+"\n"
             elif res['result'][i]['meal_type_nm']=="중식":
                 lunch+=res['result'][i]['if_menu_nm']+"\n"
             elif res['result'][i]['meal_type_nm']=="석식":
-                dinner+=res['result'][i]['if_menu_nm']+"\n"
-        msg ="RIST식당/{0}요일\n-------조식-------\n{1}\n-------중식-------\n{2}\n-------석식-------\n{3}\n".format(days[r],breakfast,lunch,dinner)
+                if res['result'][i]['dinner_type_nm']=="일반식(한식)":
+                    dinner+=res['result'][i]['if_menu_nm']+"\n"
+                elif res['result'][i]['dinner_type_nm']=="일반식(양식)":
+                    dinner_b+=res['result'][i]['if_menu_nm']+"\n"
+                
         
+        return_msg ="RIST식당/{0}요일\n-------조식-------\n{1}\n-------중식-------\n{2}\n-------석식A-------\n{3}\n-------석식B-------\n{4}\n".format(days[r],breakfast,lunch,dinner,dinner_b)
         
     elif datacontent =='시간표':
         img_bool = True
         msg = 'B반의 시간표'
-        url = 'http://pocheck-bicsu.c9users.io:8080/static/images/schedule_B.jpg'
+        url = 'http://bicsu.pythonanywhere.com/static/images/schedule_B.jpg'
         
  
     return_dict =  JsonResponse({
