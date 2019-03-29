@@ -101,7 +101,7 @@ def message(request):
         
     elif datacontent =='시간표':
         img_bool = True
-        msg = 'B반 시간표입니다 >_<'
+        msg = 'http://bicsu.pythonanywhere.com/schedule'
         url = 'http://bicsu.pythonanywhere.com/static/images/schedule_B.jpg'
         
     return_dict =  JsonResponse({
