@@ -94,8 +94,10 @@ def message(request):
                 elif res['result'][i]['dinner_type_nm']=="일반식(양식)":
                     dinner_b+=res['result'][i]['if_menu_nm']+"\n"
                 
-        
-        msg ="RIST식당/{0}요일\n-------조식-------\n{1}\n-------중식-------\n{2}\n-------석식A-------\n{3}\n-------석식B-------\n{4}\n".format(days[r],breakfast,lunch,dinner,dinner_b)
+        if r != 5 and r != 6 :
+            print('주말입니다;;\nRIST식당은 밥을 주지 않습니다.')
+        else : 
+            msg ="RIST식당/{0}요일\n-------조식-------\n{1}\n-------중식-------\n{2}\n-------석식A-------\n{3}\n-------석식B-------\n{4}\n".format(days[r],breakfast,lunch,dinner,dinner_b)
         
     elif datacontent =='시간표':
         img_bool = True
