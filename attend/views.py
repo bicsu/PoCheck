@@ -118,8 +118,8 @@ def message(request):
             'text': msg,
             'photo':{
                 'url':url,
-                'width':640,
-                'height':480
+                'width':1024,
+                'height':768
                 }
             
         },
