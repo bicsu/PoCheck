@@ -11,17 +11,6 @@ import random
 import os
 import re
 import requests
-
-    
-def post_detail(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    return render(request, 'attend/post_detail.html', {'post': post})    
-    
-# def post_detail(request, pk):
-#     post = get_object_or_404(Post, pk=pk)
-#     return render(request, 'attend/tables.html')    
-        
-    
 def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST)
@@ -38,27 +27,9 @@ def post_new(request):
 def check(request):
     return render(request, 'attend/tables.html')
 
-
-
-    
-def post_edit(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    if request.method == "POST":
-        form = PostForm(request.POST, instance=post)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.published_date = timezone.now()
-            post.save()
-            return redirect('post_detail', pk=post.pk)
-    else:
-        form = PostForm(instance=post)
-    return render(request, 'attend/post_edit.html', {'form': form})
-    
-    
 def schedule(request):
     return render(request, 'attend/photos.html')
-##### kakao
+#################################################################################################### kakao
 
 def keyboard(request):
  
@@ -127,9 +98,9 @@ def message(request):
         msg ="RIST식당/{0}요일\n-------조식-------\n{1}\n-------중식-------\n{2}\n-------석식A-------\n{3}\n-------석식B-------\n{4}\n".format(days[r],breakfast,lunch,dinner,dinner_b)
         
     elif datacontent =='시간표':
-        # img_bool = True
-        msg = 'http://bicsu.pythonanywhere.com/schedule'
-        # url = '/pocheck/attend/static/images/schedule_B.jpg'
+        img_bool = True
+        # msg = 'http://bicsu.pythonanywhere.com/schedule'
+        url = 'http://bicsu.pythonanywhere.com/static/images/schedule_B.jpg'
         
     return_dict =  JsonResponse({
             'message': {

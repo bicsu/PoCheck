@@ -17,3 +17,6 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+        
+class Check(models.Model):
+    attend_bool = models.BooleanField(default=False)
