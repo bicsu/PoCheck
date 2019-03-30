@@ -58,3 +58,8 @@
 /*.PositiveTransaction.green {*/
 /*  color: #33FF3C;*/
 /*}*/
+
+body {
+    background: white url("images/cat.jpg")
+no-repeat;
+}
