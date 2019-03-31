@@ -15,3 +15,4 @@ def update_attend():
 		f.close()
 	attend = dict(sorted(attend.items()))
 	return attend
+print(os.getcwd())
