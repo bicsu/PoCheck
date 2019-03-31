@@ -1,4 +1,5 @@
 from django.urls import path
+from django.conf.urls import url
 from . import views
 
 urlpatterns = [
@@ -9,4 +10,8 @@ urlpatterns = [
     path('keyboard/',views.keyboard, name='keyboard'),
     path('message', views.message, name='message'),
     path('schedule', views.schedule, name='schedule'),
+    path('calendar',views.calendar,name='calendar'),
+    url(r'^index/$', views.index, name='index'),
+    #path('templete',views.templete,name='templete'),
+    path('chulcheck', views.chul_check, name='chulcheck'),
     ]

@@ -19,4 +19,5 @@ class Post(models.Model):
         return self.title
         
 class Check(models.Model):
-    attend_bool = models.BooleanField(default=False)
+    name = models.CharField(max_length=200)
+    checking = models.IntegerField()

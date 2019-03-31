@@ -128,3 +128,13 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 # ASGI_APPLICATION = 'websocket.routing.application'
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'bicsu$POcheck_DB',
+#         'USER': 'bicsu',
+#         'PASSWORD': 'rhkstn123',
+#         'HOST': '<your_mysql_hostname>',
+#     }
+# }
