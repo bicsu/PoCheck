@@ -1,12 +1,10 @@
 import os
 def update_attend():
-	print(os.getcwd())
 	PATH = ""
 	if os.getcwd() == '/home/bicsu/PoCheck/attend':
 		PATH = '/home/bicsu/PoCheck/attend'
 	elif os.getcwd() == '/home/ubuntu/workspace/pocheck':
 		PATH = './attend'		
-	print(PATH)	
 	with open(PATH+'/test1.txt', 'r') as f :
 		lines = f.readlines()
 		attend = {} #sorting 하기
