@@ -1,7 +1,7 @@
 import os
 def update_attend():
 	print('root:',os.getcwd())
-	with open('./test2.txt', 'r') as f :
+	with open('./attend/test1.txt', 'r') as f :
 		lines = f.readlines()
 		attend = {} #sorting 하기
 		for i in lines:
