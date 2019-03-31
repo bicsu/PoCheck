@@ -11,7 +11,6 @@ import random
 import os
 import re
 import requests
-from datetime import datetime 
 
 from . import attend_recv
 
