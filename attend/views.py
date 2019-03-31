@@ -14,21 +14,21 @@ import requests
 # from attend_recv import update_attend
 from . import attend_recv
 
-def post_new(request):
-    if request.method == "POST":
-        form = PostForm(request.POST)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.published_date = timezone.now()
-            post.save()
-            return redirect('post_detail', pk=post.pk)
-    else:
-        form = PostForm()
-    return render(request, 'attend/post_edit.html', {'form': form})
+# def post_new(request):
+#     if request.method == "POST":
+#         form = PostForm(request.POST)
+#         if form.is_valid():
+#             post = form.save(commit=False)
+#             post.author = request.user
+#             post.published_date = timezone.now()
+#             post.save()
+#             return redirect('post_detail', pk=post.pk)
+#     else:
+#         form = PostForm()
+#     return render(request, 'attend/post_edit.html', {'form': form})
 
-def check(request):
-    return render(request, 'attend/base.html')
+def home(request):
+    return render(request, 'attend/home.html')
 
 def schedule(request):
     return render(request, 'attend/photos.html')
@@ -36,26 +36,22 @@ def schedule(request):
 def calendar(request):
     return render(request, 'attend/tables.html', {})
 
-def index(request):
-    return render(request, 'attend/index.html')
+def attendance(request):
+    return render(request, 'attend/attendance.html')
     
 #출석 체크 되는 화면 veiw    
 def chul_check(request):
     attend_dict = attend_recv.update_attend()
-    if len(Check.objects.all()) == 0 :
-        for i in attend_dict :
-            Check.objects.create(name = i, checking=int(attend_dict[i]))
-    else : 
-        for i in attend_dict :
-            data = Check.objects.get(name=i)
-            # checks = Check.objects.get(name=Check.objects.all()[i].name)
-            data.checking=attend_dict[i]
-            data.save()
+    
+    
+    # if len(Check.objects.all()) == 0 :
+    Check.objects.all().delete()
+    for i in attend_dict :
+        Check.objects.create(name = i, checking=int(attend_dict[i]))
             
     checks = Check.objects.all()
     
     return render(request, 'attend/chulcheck.html', {'checks':checks})
-    
     
     
     
