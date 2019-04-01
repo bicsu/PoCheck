@@ -68,7 +68,7 @@ def keyboard(request):
 @csrf_exempt
 def message(request):
     img_bool = False
-    txt_bool = False
+    text_bool = False
     json_str = ((request.body).decode('utf-8'))
     received_json_data = json.loads(json_str)
     datacontent = received_json_data['content']
