@@ -84,7 +84,7 @@ def message(request):
     elif datacontent not in list_names :
         msg = '등록된 학생이 아닙니다. 수현쌤에게 문의해주세요 :)'
             
-    elif datacontent in list_names :
+    elif Check.objects.get(name=datacontent) in list_names :
         students = Check.objects.get(name=datacontent)
         if students.checking == 1:
             msg = '출석이 완료됐습니다.'
