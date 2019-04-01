@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html>
+{{checks.name}}
 
 {% for check in checks %}
     <div>
         {{check.name}} {{check.checking}} {{check.time}}
-        <%if ({{check.checing}}) {%>
-        
-        <%}%>
     </div>
 {% endfor %}
         {{len}}

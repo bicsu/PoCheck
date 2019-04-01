@@ -21,4 +21,4 @@ class Post(models.Model):
 class Check(models.Model):
     name = models.CharField(max_length=200)
     checking = models.IntegerField()
-    time = models.DateTimeField(auto_now=True)
+    time = models.CharField(null=True, max_length=200)
