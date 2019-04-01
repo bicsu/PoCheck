@@ -28,7 +28,7 @@ def attendance(request):
     pic_ex = []
     for x in attend_dict:
         tmp = x + '.jpg'
-        if os.path.isfile('./attend/static/img/people/'+tmp):
+        if os.path.isfile('/home/bicsu/PoCheck/attend/static/img/people/'+tmp):
             pic_ex.append(1)
         else:
             pic_ex.append(0)
