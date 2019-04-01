@@ -10,6 +10,8 @@ urlpatterns = [
     path('schedule', views.schedule, name='schedule'),
     path('attend_list', views.attend_list, name='attend_list'),
     ]
+    
+    
     # path('attendance', views.attendance, name='attendance'),
     # url(r'^index/$', views.index, name='index'),
     # path('chulcheck', views.chul_check, name='chulcheck'),

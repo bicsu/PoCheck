@@ -163,7 +163,7 @@ def message(request):
         'keyboard': {
             'type':'buttons',
             'buttons':['출석체크 확인', '오늘 RIST 식단','시간표']
-        }
+        }})
     return_text_dict =  JsonResponse({
             'message': {
                 'text': msg
@@ -171,7 +171,7 @@ def message(request):
             'keyboard': {
                 'type':'text'}
                                     })
-    })
+    
     if img_bool :
         return return_img_dict
     elif text_bool :
