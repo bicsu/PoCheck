@@ -1,5 +1,6 @@
 {% extends 'attend/base.html' %}
 {% load staticfiles %}
+{% load static %}
 <!doctype html>
 
 {% block content %}
@@ -21,22 +22,22 @@
 										<span class="icon-bar"></span>
 									</button>
                 <!-- Brand -->
-                <a class="navbar-brand page-scroll sticky-logo" href="bicsu.pythonanywhere.com">
+                <a class="navbar-brand page-scroll sticky-logo" href="#team">
                   <h1><span>Po</span>Check</h1>
-                  <!-- Uncomment below if you prefer to use an image logohttp://<pocheck-bicsu class="c9users io:8080"></pocheck-bicsu>
+                   <!--Uncomment below if you prefer to use an image logohttp://<pocheck-bicsu class="c9users io:8080"></pocheck-bicsu>-->
 								</a>
               </div>
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" id="navbar-example">
                 <ul class="nav navbar-nav navbar-right">
                   <li class="active">
-                    <a class="page-scroll" href="bicsu.pythonanywhere.com"><b>Home</b></a>
+                    <a class="page-scroll" href=""><b>Home</b></a>
                   </li>
                   <li>
                     <a class="page-scroll" href="#team"><b>Team</b></a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="bicsu.pythonanywhere.com/attendance"><b>Attendance</b></a>
+                    <a class="page-scroll" href="/attendance"><b>Attendance</b></a>
                   </li>
                 </ul>
               </div>

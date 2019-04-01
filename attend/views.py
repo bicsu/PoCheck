@@ -32,7 +32,6 @@ def attendance(request):
             pic_ex.append(1)
         else:
             pic_ex.append(0)
-    
     Check.objects.all().delete()
     for k, i in enumerate(attend_dict) :
         Check.objects.create(name = i, checking=int(attend_dict[i][0]), time =attend_dict[i][1], pic = pic_ex[k])
