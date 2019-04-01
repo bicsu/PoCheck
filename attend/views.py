@@ -76,18 +76,21 @@ def message(request):
     url = 'ㅎㅎ'
     attend_dict = attend_recv.update_attend()
     list_names = list(attend_dict.keys())
+    list_names += ['출석체크 확인', '오늘 RIST 식단','시간표']
+    
+
     if datacontent =='출석체크 확인':
         text_bool = True
         msg = '이름을 입력해주세요(ex. 홍길동)'
-        
+    elif datacontent not in list_names :
+        msg = '등록된 학생이 아닙니다. 수현쌤에게 문의해주세요 :)'
+            
     elif datacontent in list_names :
         students = Check.objects.get(name=datacontent)
         if students.checking == 1:
             msg = '출석이 완료됐습니다.'
         else :
             msg = '출석을 안하셨네요 :( \n 출석해주세요.'
-    elif datacontent == '김관수':
-        msg = '이건되네'
         
     elif datacontent == '오늘 RIST 식단':
         url = 'https://ssgfoodingplus.com/fmn101.do?goTo=todayMenuJson'
