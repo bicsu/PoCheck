@@ -143,8 +143,8 @@ def message(request):
             img_bool = True
             msg = 'http://bicsu.pythonanywhere.com/schedule'
             url = 'http://bicsu.pythonanywhere.com/static/images/schedule_B.jpg'
-        else :
-            msg = '등록된 학생이 아닙니다. 수현쌤에게 문의해주세요 :)'
+    else :
+        msg = '등록된 학생이 아닙니다. 수현쌤에게 문의해주세요 :)'
     return_dict =  JsonResponse({
             'message': {
                 'text': msg
