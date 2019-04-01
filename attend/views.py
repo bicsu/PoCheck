@@ -68,6 +68,7 @@ def keyboard(request):
 @csrf_exempt
 def message(request):
     img_bool = False
+    txt_bool = False
     json_str = ((request.body).decode('utf-8'))
     received_json_data = json.loads(json_str)
     datacontent = received_json_data['content']
@@ -87,6 +88,7 @@ def message(request):
             msg = '출석을 안하셨네요 :( \n 출석해주세요.'
     elif datacontent == '김관수':
         msg = '이건되네'
+        
     elif datacontent == '오늘 RIST 식단':
         url = 'https://ssgfoodingplus.com/fmn101.do?goTo=todayMenuJson'
         yearmonth = datetime.datetime.now().strftime("%Y-%m-")
