@@ -1,0 +1,39 @@
+<!doctype html>
+{% extends 'attend/base.html' %} 
+{% load staticfiles %}
+{% load static %}
+<html>
+<head>
+</head>
+    {% block content %}
+    <body>
+        <div id="pricing" class="pricing-area area-padding">
+            <div class="container">
+              <div class="row centered-form">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="section-headline text-center">
+                        <br><br><br>
+                    <h2>Check List</h2>   
+                        <br><br><br>
+                        
+                        <div class="row">
+                            <div class="pri_table_list">
+                                <h3>출석 log</span></h3>
+                                {% for check in checks %}
+                                {% if check.checking == 1 %}
+                                 <ol>
+                                      <li class="check"><b>{{check.name}}</b><div class='text-center'><b>{{check.time}}</b></div></li>
+                                 </ol>
+                                 {% endif %}
+                                 {% endfor %}
+                                 </div>
+                                <!--</div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </body>
+    {% endblock %}
+</html>

@@ -24,31 +24,33 @@ def calendar(request):
     return render(request, 'attend/tables.html', {})
 
 def attendance(request):
-    return render(request, 'attend/attendance.html')
-    
-#출석 체크 되는 화면 veiw    
-def chul_check(request):
     attend_dict = attend_recv.update_attend()
+    pic_ex = []
+    for x in attend_dict:
+        tmp = x + '.jpg'
+        if os.path.isfile('./attend/static/img/people/'+tmp):
+            pic_ex.append(1)
+        else:
+            pic_ex.append(0)
+    
     Check.objects.all().delete()
-    for i in attend_dict :
-        Check.objects.create(name = i, checking=int(attend_dict[i][0]), time =attend_dict[i][1])
-    # if len(Check.objects.all()) == 0 :
-    #     for i in attend_dict :
-    #         Check.objects.create(name = i, checking=int(attend_dict[i]), time=datetime.datetime())
-    # else :
-    #     for i in Check.objects.all():
-    #         if i.name != attend_dict[i.name]:
-    #             instance = Check.objects.get(name = i.name)
-    #             instance.checking = attend_dict[i.name]
-    #             instance.save()
-                
-        
+    for k, i in enumerate(attend_dict) :
+        Check.objects.create(name = i, checking=int(attend_dict[i][0]), time =attend_dict[i][1], pic = pic_ex[k])
     checks = Check.objects.all()
-    
-    
     length = len(Check.objects.all())
-    return render(request, 'attend/chulcheck.html', {'checks':checks, 'len':length })
     
+    return render(request, 'attend/attendance.html',  {'checks':checks, 'len':length })
+
+def attend_list(request):
+    attend_dict = attend_recv.update_attend()
+
+    Check.objects.all().delete()
+    for k, i in enumerate(attend_dict) :
+        Check.objects.create(name = i, checking=int(attend_dict[i][0]), time =attend_dict[i][1])
+    checks = Check.objects.all()
+    length = len(Check.objects.all())
+    
+    return render(request, 'attend/attend_list.html',  {'checks':checks, 'len':length })
     
     
 #DON'T TOUCH!
@@ -72,7 +74,28 @@ def message(request):
     msg = 'ㅎㅎ'
     url = 'ㅎㅎ'
     if datacontent =='출석체크 확인':
-        msg = '이 기능은 아직;;'
+        msg = '이름을 입력해주세요(ex. 홍길동)'
+        return_dict =  JsonResponse({
+            'message': {
+                'text': msg
+            },
+            'keyboard': {
+                'type':'text'}
+                                    })
+        json_str = ((request.body).decode('utf-8'))
+        received_json_data = json.loads(json_str)
+        datacontent = received_json_data['content']
+        
+        student = Check.objects.get(name)
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
     elif datacontent == '오늘 RIST 식단':
         url = 'https://ssgfoodingplus.com/fmn101.do?goTo=todayMenuJson'
