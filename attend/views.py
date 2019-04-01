@@ -73,29 +73,18 @@ def message(request):
     datacontent = received_json_data['content']
     msg = 'ㅎㅎ'
     url = 'ㅎㅎ'
+    attend_dict = attend_recv.update_attend()
+    list_names = list(attend_dict.keys())
     if datacontent =='출석체크 확인':
+        text_bool = True
         msg = '이름을 입력해주세요(ex. 홍길동)'
-        return_dict =  JsonResponse({
-            'message': {
-                'text': msg
-            },
-            'keyboard': {
-                'type':'text'}
-                                    })
-        json_str = ((request.body).decode('utf-8'))
-        received_json_data = json.loads(json_str)
-        datacontent = received_json_data['content']
         
-        student = Check.objects.get(name)
-        
-        
-        
-        
-        
-        
-        
-        
-        
+    elif datacontent in list_names :
+        students = Check.objects.get(name=datacontent)
+        if student.checking == 1:
+            msg = '출석이 완료됐습니다.'
+        else :
+            msg = '출석 전입니다. 출석해주세요.'
         
     elif datacontent == '오늘 RIST 식단':
         url = 'https://ssgfoodingplus.com/fmn101.do?goTo=todayMenuJson'
@@ -175,9 +164,18 @@ def message(request):
             'type':'buttons',
             'buttons':['출석체크 확인', '오늘 RIST 식단','시간표']
         }
-
+    return_text_dict =  JsonResponse({
+            'message': {
+                'text': msg
+            },
+            'keyboard': {
+                'type':'text'}
+                                    })
     })
     if img_bool :
         return return_img_dict
+    elif text_bool :
+        return return_text_dict
     else : 
         return return_dict
+        
