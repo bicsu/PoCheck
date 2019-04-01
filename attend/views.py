@@ -81,7 +81,7 @@ def message(request):
         
     elif datacontent in list_names :
         students = Check.objects.get(name=datacontent)
-        if student.checking == 1:
+        if students.checking == 1:
             msg = '출석이 완료됐습니다.'
         else :
             msg = '출석 전입니다. 출석해주세요.'
